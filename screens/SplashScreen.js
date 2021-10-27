@@ -1,7 +1,9 @@
 import React from 'react'
 import { Image, View, Text, Button, StyleSheet } from 'react-native'
+import { CommonActions } from '@react-navigation/native'
 
 export default function SplashScreen({navigation}) {
+
     return (
         <View>
             <Image
@@ -18,8 +20,14 @@ export default function SplashScreen({navigation}) {
             <Text>Mon app</Text>
             <Button title="Commencer" color="blue"
              onPress={() => {
-                 navigation.popToTop()
-                 navigation.navigate("Home")
+                navigation.dispatch(
+                    CommonActions.reset({
+                      index: 0,
+                      routes: [
+                        { name: 'Home' }
+                      ],
+                    })
+                  )
              }} />
         </View>
     )
