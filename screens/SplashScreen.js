@@ -1,41 +1,41 @@
 import React from 'react'
-import { Image, View, Text, Button, StyleSheet } from 'react-native'
+import { Image, StyleSheet, View, Text, Button } from 'react-native'
 import { CommonActions } from '@react-navigation/native'
 
 export default function SplashScreen({navigation}) {
-
     return (
-        <View>
+        <View style={styles.container}>
             <Image
-                style={styles.img}
-                source={{
-                    uri: 'https://reactnative.dev/img/tiny_logo.png'
-                }}
-            />
-            <Image
-                style={styles.img}
-                source={require('../assets/favicon.png')}
-            />
-
-            <Text>Mon app</Text>
-            <Button title="Commencer" color="blue"
-             onPress={() => {
-                navigation.dispatch(
+                style={styles.logo}
+                source={require('../assets/booklogo.png')}
+             />
+            <Text style={styles.title}>Book'App</Text>
+            <Button title="Commencer" color="green"
+                onPress={() =>
+                    navigation.dispatch(
                     CommonActions.reset({
                       index: 0,
                       routes: [
-                        { name: 'Home' }
+                        { name: 'BooksList' }
                       ],
                     })
-                  )
-             }} />
+                  )} />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    img: {
-        width: 50,
-        height: 50
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    logo: {
+        width: 200,
+        height: 200,
+    },
+    title: {
+        margin: 20,
+        fontSize: 48
     }
 })
