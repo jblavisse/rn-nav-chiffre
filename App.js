@@ -4,7 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
-import DetailsScreen from './screens/DetailsScreen';
+import ContactScreen from './screens/ContactScreen';
+import SplashScreen from './screens/SplashScreen';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -16,9 +17,24 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+      <Stack.Navigator initialRouteName="Splash"
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: 'purple',
+            },
+            headerTintColor: 'orange',
+            headerTitleStyle: {
+              fontSize: 18,
+            },
+          }}
+      >
+        <Stack.Screen name="Splash" component={SplashScreen}
+          options={{ headerShown: false}} />
+
+        <Stack.Screen name="Home" component={HomeScreen}
+          options={{ title: 'Ma maison' }} />
+        <Stack.Screen name="Contact" component={ContactScreen}
+          options={{ title: 'Me MP' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
